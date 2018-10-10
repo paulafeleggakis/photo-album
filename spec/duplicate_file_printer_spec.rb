@@ -1,9 +1,8 @@
 require 'spec_helper'
-require_relative '../duplicate_file_handler.rb'
+require_relative '../duplicate_file_printer.rb'
 
-describe DuplicateFileHandler do
-  context 'folder being handled exists' do
-    let(:folder)  { './spec/support/test_album' }
+describe DuplicateFilePrinter do
+  context 'there are duplicate files to print' do
     let(:files) do
       {
         File.read('./spec/support/test_album/sunset.jpg') =>
@@ -22,10 +21,14 @@ describe DuplicateFileHandler do
       }
     end
 
-    subject { DuplicateFileHandler.new(folder) }
+    let(:duplicates_output) do
+      ">> DUPLICATE FILES FOUND\n./spec/support/test_album/s-02141.jpg\n./spec/support/test_album/sunset.jpg\n"
+    end
 
-    it 'returns a list of duplicate file names with their corresponding locations' do
-      expect(subject.find_duplicates).to include(files)
+    subject { DuplicateFilePrinter.new(files) }
+
+    it 'outputs a list of duplicate file names with their path' do
+      expect{subject.print_duplicates}.to output(duplicates_output).to_stdout
     end
   end
 end
