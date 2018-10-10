@@ -24,7 +24,7 @@ describe FileHandler do
 
     subject { FileHandler.new(folder) }
 
-    it 'returns a list of duplicate file names with their corresponding locations' do
+    it 'returns files in folder as a hash of file content and file name' do
       expect(subject.find_duplicates).to include(files)
     end
   end
