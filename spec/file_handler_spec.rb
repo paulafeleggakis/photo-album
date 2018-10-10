@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../duplicate_file_handler.rb'
+require_relative '../file_handler.rb'
 
-describe DuplicateFileHandler do
+describe FileHandler do
   context 'folder being handled exists' do
     let(:folder)  { './spec/support/test_album' }
     let(:files) do
@@ -22,7 +22,7 @@ describe DuplicateFileHandler do
       }
     end
 
-    subject { DuplicateFileHandler.new(folder) }
+    subject { FileHandler.new(folder) }
 
     it 'returns a list of duplicate file names with their corresponding locations' do
       expect(subject.find_duplicates).to include(files)

@@ -1,4 +1,4 @@
-class DuplicateFileHandler
+class FileHandler
   def initialize(folder)
     @folder = folder
   end

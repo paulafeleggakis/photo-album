@@ -1,4 +1,4 @@
-class DuplicateFilePrinter
+class FilePrinter
   def initialize(files)
     @files = files
   end

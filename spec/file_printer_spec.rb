@@ -1,7 +1,7 @@
 require 'spec_helper'
-require_relative '../duplicate_file_printer.rb'
+require_relative '../file_printer.rb'
 
-describe DuplicateFilePrinter do
+describe FilePrinter do
   context 'there are duplicate files to print' do
     let(:files) do
       {
@@ -25,10 +25,10 @@ describe DuplicateFilePrinter do
       ">> DUPLICATE FILES FOUND\n./spec/support/test_album/s-02141.jpg\n./spec/support/test_album/sunset.jpg\n"
     end
 
-    subject { DuplicateFilePrinter.new(files) }
+    subject { FilePrinter.new(files) }
 
     it 'outputs a list of duplicate file names with their path' do
-      expect{subject.print_duplicates}.to output(duplicates_output).to_stdout
+      expect { subject.print_duplicates }.to output(duplicates_output).to_stdout
     end
   end
 end
